@@ -1,12 +1,14 @@
-import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository.ts";
+import { CategoriesPostgresRepository } from "../../repositories/implementations/CategoriesPostgresRepository";
 import { CreateCatogryController } from "./CreateCategoryController";
 import { CreateCategoryService } from "./CreateCategoryService";
 
-const categoriesRepository = CategoriesRepository.getInstance();
-const createCategoryService = new CreateCategoryService(categoriesRepository);
+export default (): CreateCatogryController => {
+  const categoriesRepository = new CategoriesPostgresRepository();
+  const createCategoryService = new CreateCategoryService(categoriesRepository);
 
-const createCategoryController = new CreateCatogryController(
-  createCategoryService
-);
+  const createCategoryController = new CreateCatogryController(
+    createCategoryService
+  );
 
-export { createCategoryController };
+  return createCategoryController;
+};

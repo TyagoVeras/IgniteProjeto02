@@ -6,6 +6,7 @@ class ListCategoryController {
 
   handle(request: Request, response: Response): Response {
     const categoryList = this.listCategoryService.execute();
+    console.log(categoryList);
     return response.json(categoryList);
   }
 }
