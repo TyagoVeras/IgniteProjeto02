@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API - LICI",
+    "description": "API DO CONSUMIDOR",
+    "version": "1.0",
+    "contact": "tyagoveras@gmail.com"
+  },
+  "paths": {
+    "/categories": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Create a category",
+        "description": "Crate a new category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example":{
+                  "nome":"category name sample",
+                  "description":"description name sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "Created"
+          },
+          "500":{
+            "description": "Category already exists"
+          }
+        }
+      },
+      "get":{
+        "tags": ["Category"],
+        "summary": "List all categoriess",
+        "description": "List all cateogries",
+        "responses":{
+          "200":{
+            "description": "Success",
+            "content": {
+              "application/json":{
+                "schema":{
+                  "type": "array",
+                  "items":{
+                    "type": "object",
+                    "properties": {
+                      "name":{
+                        "type":"string"
+                      },
+                      "description":{
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
