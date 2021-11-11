@@ -3,10 +3,10 @@ import { container } from "tsyringe";
 import { ImportCateogryService } from "./importCategoryService";
 
 class ImportCategoryController {
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const importCategoryService = container.resolve(ImportCateogryService);
     const { file } = request;
-    importCategoryService.execute(file);
+    await importCategoryService.execute(file);
     return response.send();
   }
 }

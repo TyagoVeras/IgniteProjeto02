@@ -10,7 +10,7 @@ interface IImportCategory {
 @injectable()
 class ImportCateogryService {
   constructor(
-    @inject("CategoryRepository")
+    @inject("CategoriesRepository")
     private categoryRepository: IcategoryRepository
   ) {}
 
@@ -55,10 +55,10 @@ class ImportCateogryService {
 
     categories.map(async (category) => {
       const { name, description } = category;
-      const existCategory = this.categoryRepository.findByName(name);
+      const existCategory = await this.categoryRepository.findByName(name);
 
       if (!existCategory) {
-        this.categoryRepository.create({
+        await this.categoryRepository.create({
           name,
           description,
         });

@@ -5,7 +5,7 @@ import { IcategoryRepository } from "../../repositories/IcategoriesRepository";
 @injectable()
 class ListCategoryService {
   constructor(
-    @inject("CategoryRepository")
+    @inject("CategoriesRepository")
     private categoryRepository: IcategoryRepository
   ) {}
 
