@@ -13,7 +13,7 @@ class Specification {
   description: string;
 
   @Column()
-  createdAt: Date;
+  created_at: Date;
 
   constructor() {
     if (!this.id) {

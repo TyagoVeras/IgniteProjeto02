@@ -1,6 +1,7 @@
 import csvParse from "csv-parse";
 import fs from "fs";
 import { inject, injectable } from "tsyringe";
+import { AppErros } from "../../../../erros/AppErros";
 import { IcategoryRepository } from "../../repositories/IcategoriesRepository";
 
 interface IImportCategory {
@@ -19,7 +20,8 @@ class ImportCateogryService {
   ): Promise<IImportCategory[]> {
     // retornando uma promessa que aguarda todas as categorias serem carregadas para dentro do array categoris linha 33
     return new Promise((resolve, reject) => {
-      if (file.mimetype !== "text/csv") throw new Error("File is not csv type");
+      if (file.mimetype !== "text/csv")
+        throw new AppErros("File is not csv type", 400);
 
       const categories: IImportCategory[] = [];
 
