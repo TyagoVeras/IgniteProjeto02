@@ -30,6 +30,10 @@ export async function ensureAuthenticated(
       throw new AppErros("user does not exists", 401);
     }
 
+    request.user = {
+      id: user.id,
+    };
+
     next();
   } catch {
     throw new AppErros("Token invalido", 401);
